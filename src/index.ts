@@ -3,6 +3,7 @@ import helmet from 'helmet'
 import cors from 'cors'
 import bodyParser from 'body-parser'
 import routeDirectory from './routes'
+import errors from './errors'
 
 const app = express()
 app.use(helmet())
@@ -39,9 +40,10 @@ app.use('/', routeDirectory)
 app.use((_req, res) => {
   const error = new Error('Not Found')
 
-  res.status(404).json({
-    message: error.message
-  })
+  res.status(404).json(errors[404]({
+    title: error.message,
+    detail: null
+  }))
 })
 
 const port = process.env.PORT ?? '3001'
