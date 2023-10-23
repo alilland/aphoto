@@ -1,7 +1,7 @@
 import express from 'express'
 import { version } from '../../../package.json'
 import errors from '../../errors'
-
+import v1Routes from './v1'
 const router = express.Router()
 
 router.get('/', (req, res) => {
@@ -30,5 +30,7 @@ router.get('/', (req, res) => {
     }))
   }
 })
+
+router.use('/v1/public', v1Routes)
 
 export default router
