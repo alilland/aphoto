@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+. "$(dirname "$0")/_/husky.sh"
+
+pattern="^ID-[0-9]+:"
+CONTENT=$(cat $1)
+if ! echo $CONTENT | grep -qE "$pattern"; then
+  echo "error: invalid commit message format. Should match pattern: ID-<number>:"
+  exit 1
+fi

@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+branch_name=$(git symbolic-ref HEAD | sed -e 's,refs/heads/,,')
+
+## Check branch name
+echo $branch_name
+if [[ ! $branch_name =~ ^(feature/.*|bugfix/.*|hotfix/.*|task/.*)$ ]]; then
+  echo "Error: Branch naming convention not followed!"
+  echo "Valid branch names are: feature/, bugfix/, hotfix/, and task/."
+  exit 1
+fi
