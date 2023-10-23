@@ -1,0 +1,9 @@
+# Use this file for docker contianers running pm2-runtime
+# https://pm2.keymetrics.io/docs/usage/docker-pm2-nodejs/
+apps:
+  - script: "./dist/src/index.js"
+    name: "app"
+    out_file : '/dev/stdout'
+    error_file: '/dev/stderr'
+    merge_logs: true
+    log_date_format: 'YYYY-MM-DD HH:mm Z'
