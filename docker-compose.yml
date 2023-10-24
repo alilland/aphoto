@@ -11,4 +11,5 @@ services:
       - .env.development
     volumes:
       - .:/app
+      - ~/.aws:/root/.aws:ro
     command:  yarn run start

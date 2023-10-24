@@ -41,4 +41,11 @@ error[404] = function (obj: ErrorInput) {
   }
 }
 
+error[500] = {
+  statusCode: 500,
+  errorType: 'Internal Server Error',
+  title: 'Something went wrong',
+  detail: null
+}
+
 export default error

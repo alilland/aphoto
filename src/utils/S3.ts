@@ -1,10 +1,8 @@
-import AWS from '../config/AWS'
+import { S3Client } from '@aws-sdk/client-s3'
+import { type NodeJsClient } from '@smithy/types'
 
-const S3 = new AWS.S3({
-  apiVersion: '2006-03-01',
-  params: {
-    Bucket: process.env.AWS_S3_BUCKET
-  }
-})
-
-export default S3
+export default new S3Client({
+  region: process.env.AWS_REGION
+  // accessKeyId: process.env.AWS_ACCESS_ID,
+  // secretAccessKey: process.env.AWS_SECRET_KEY
+}) as NodeJsClient<S3Client>
