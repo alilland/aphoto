@@ -1,4 +1,4 @@
-- step 0 - create a `.env.development` file at the root of the folder
+- step 0 - copy the values from `.env.sample` and create a `.env.development` file at the root of the folder
 - step 1 - create an AWS account
 - step 2 - provision an IAM user
 - step 3 - download your access key / secret
