@@ -35,6 +35,7 @@
     "start": "nodemon ./src/index.ts",
     "cleanup": "rm -rf dist/",
     "build-ts": "yarn cleanup; tsc",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "dev": "yarn start"
   }
 }
