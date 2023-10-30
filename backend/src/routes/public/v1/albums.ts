@@ -87,7 +87,11 @@ router.get('/:album', [
 
     const albums = data.CommonPrefixes?.map((e) => ({
       type: 'album',
-      name: e.Prefix ?? null
+      name: e.Prefix ?? null,
+      _link: {
+        self: `/v1/public/albums/${e.Prefix?.replace('/', '')}`,
+        images: `/v1/public/albums/${e.Prefix?.replace('/', '')}/images`
+      }
     })) ?? []
     res.status(200).json({
       method: 'GET',
