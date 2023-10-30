@@ -2,4 +2,5 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 echo "Running lint"
-yarn lint
+cd ./backend/ && yarn lint
+cd ../frontend/ && npm run lint

@@ -7,10 +7,10 @@ RUN apk add --no-cache bash
 RUN npm install -g npm@10.2.1 pm2
 
 # Create app directory
-WORKDIR /app
+WORKDIR /app/backend
 
 # Copy app
-COPY . /app/
+COPY . /app/backend
 RUN yarn install
 
 # Expose port
@@ -25,4 +25,4 @@ ENV DOCKER='true'
 # To specify the app to run, use --only APP
 # APPs are defined in pm2-config.yml
 # EXAMPLE: CMD ["pm2-runtime", "pm2-config.yml", "--only", "APP"]
-CMD ["pm2-runtime", "pm2-config.yml"]
+CMD ["yarn", "dev"]
