@@ -1,5 +1,9 @@
+'use client'
+
 import React, { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/navigation'
+// import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 // import { API } from '../../../utils/http'
 
@@ -10,31 +14,42 @@ interface Image {
   alt: string
 }
 
+// export async function getServerSideProps({ params }) {
+//   const slug = params.slug || [];
+//   // Fetch your data based on slug
+//   const data = await fetchDataBasedOnSlug(slug);
+//   return { props: { data } };
+// }
+
 const AlbumRecord = () => {
+  const pathname = usePathname()
   const [isLoading, setLoading] = useState(true)
   const [images, setImages] = useState<Image[]>([])
-  const router = useRouter()
+  // const [id, setId] = useState('')
 
-  // const loadImages = async (id: string) => {
-  //   try {
-  //     const res = await API.get(`/v1/public/albums/${id}/images`)
-  //     if (res.status === 200) {
-  //       setImages(res.data) // Assuming the API returns the images in res.data
-  //       setLoading(false)
-  //     } else {
-  //       console.error('Failed to load images', res.status)
-  //       setLoading(false)
-  //     }
-  //   } catch (error) {
-  //     console.error('An error occurred while fetching images', error)
-  //     setLoading(false)
-  //   }
-  // }
 
   useEffect(() => {
-    const id = router.query.id as string | undefined
-    if (id) {
-      document.title = 'Loading Album...'
+    // const loadImages = async (id: string) => {
+    //   try {
+    //     const res = await API.get(`/v1/public/albums/${id}/images`)
+    //     console.log(res)
+    //     setId(id)
+    //     setImages(res.data.images)
+    //     setLoading(false)
+    //   } catch (error) {
+    //     console.error('An error occurred while fetching images', error)
+    //     setLoading(false)
+    //   }
+    // }
+
+    console.log('AlbumRecord mounted')
+    document.title = 'Loading Album...'
+    // setId(router.query.id as string)
+
+    console.log(pathname)
+    if (pathname) {
+      const album = pathname.split('/')[2]
+      console.log(album)
       // loadImages(id)
     }
 
@@ -43,7 +58,7 @@ const AlbumRecord = () => {
       setImages([])
       setLoading(true)
     }
-  }, [router.query.id])
+  }, [pathname])
 
   return (
     <>
